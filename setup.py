@@ -5,7 +5,7 @@ version = '0.9.0'
 
 setup(name='iomedia.plonemail',
       version=version,
-      description="A suite of email toos for Plone.",
+      description="A suite of email tools for Plone.",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
