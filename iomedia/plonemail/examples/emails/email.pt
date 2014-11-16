@@ -1,0 +1,6 @@
+<metal:page define-macro="master">
+	<p>This is the template</p>
+		<metal:slot define-slot="main">
+			<p>This is the slot, as defined in the template</p>
+		</metal:slot>
+</metal:page>

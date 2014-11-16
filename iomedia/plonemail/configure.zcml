@@ -5,15 +5,16 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="iomedia.plonemail">
 
-  <five:registerPackage package="." initialize=".initialize" />
+    <five:registerPackage package="." initialize=".initialize" />
 
-  <genericsetup:registerProfile
-      name="default"
-      title="iomedia.plonemail"
-      directory="profiles/default"
-      description="Installs the iomedia.plonemail package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-  <!-- -*- extra stuff goes here -*- -->
-  
+    <genericsetup:registerProfile
+        name="default"
+        title="iomedia.plonemail"
+        directory="profiles/default"
+        description="Installs the iomedia.plonemail package"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+  <include package=".examples" />
+
 </configure>

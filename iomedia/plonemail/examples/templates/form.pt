@@ -1,0 +1,17 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="iomedia.plonemail">
+	<body>
+
+        <metal:slot fill-slot="main">
+
+            <h1>Test Email</h1>
+
+            <p>Press 'Send' below to send a test email to <span tal:replace="view/recipient/email" /></p>
+
+            <form name="send-test-email" tal:attributes="action request/URL" method="post">
+                <input type="submit" name="send-test-email" value="Send" />
+            </form>
+
+        </metal:slot>
+    </body>
+</html>
