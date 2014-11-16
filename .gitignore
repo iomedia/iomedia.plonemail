@@ -3,6 +3,7 @@
 *.tmp*
 *.mo
 *.egg
+*.eggs
 *.EGG
 *.egg-info
 *.EGG-INFO
