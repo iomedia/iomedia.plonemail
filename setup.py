@@ -6,18 +6,18 @@ version = '0.9.0'
 setup(name='iomedia.plonemail',
       version=version,
       description="A suite of email tools for Plone.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+          ],
       keywords='',
       author='',
       author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      url='https://github.com/iomedia/iomedia.plonemail',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['iomedia'],
@@ -25,8 +25,7 @@ setup(name='iomedia.plonemail',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
-      ],
+          ],
       entry_points="""
       # -*- Entry points: -*-
 
