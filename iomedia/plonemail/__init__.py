@@ -1,4 +1,4 @@
-# -*- extra stuff goes here -*-
+from plonemail import EmailBase  # noqa
 
 
 def initialize(context):

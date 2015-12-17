@@ -25,6 +25,7 @@ setup(name='iomedia.plonemail',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'html2text'
           ],
       entry_points="""
       # -*- Entry points: -*-
