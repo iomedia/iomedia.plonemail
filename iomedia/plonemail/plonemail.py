@@ -1,7 +1,8 @@
 import logging
-from email.mime.application import MIMEApplication
+from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email import Encoders
 
 import html2text
 from plone import api
@@ -17,7 +18,7 @@ class EmailBase():
     def send_email(self):
 
         # Build the outer message
-        msg = MIMEMultipart('related')
+        msg = MIMEMultipart('mixed')
         msg.preamble = 'This is a multi-part message in MIME format.'
         msg_from = ' '.join([self.sender['firstname'],
                              self.sender['lastname']])
@@ -43,10 +44,13 @@ class EmailBase():
 
         # Add any attachmets to the message
         for attach in self.attachments:
-            attachment = MIMEApplication(attach['data'],
-                                         _subtype=attach['ctype'])
-            attachment.add_header('content-disposition', 'attachment',
-                                  filename=attach['filename'])
+            attachment = MIMEBase('application', 'octet-stream')
+            attachment.set_payload(attach['data'])
+            Encoders.encode_base64(attachment)
+            attachment.add_header(
+                'Content-Disposition',
+                'inline; filename="%s"; size=%i' % (attach['filename'],
+                                                    attach['size']))
             msg.attach(attachment)
 
         # Send the message
@@ -56,11 +60,12 @@ class EmailBase():
         except Exception as error:
             logger.error('Email could not be sent: %s' % error)
 
-    def add_attachment(self, filename, data, ctype):
+    def add_attachment(self, filename, data, size, ctype=None):
         """ Adds a file attachment to the email. """
         self.attachments.append({
             'filename': filename,
             'data': data,
+            'size': size,
             'ctype': ctype})
 
     def admin_property(self):
